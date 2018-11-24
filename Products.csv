@@ -1,0 +1,11 @@
+"Item_ID";"Product_Name";"Department_Name";"Price";"Stock_Quantity"
+"1000";"Dog Food";"Pets";29.99;250
+"1001";"Dog Collar";"Pets";12.99;100
+"1002";"Dog Bone";"Pets";4.99;50
+"1003";"Dog Bed";"Pets";39.99;30
+"1004";"Dog Dish";"Pets";9.99;25
+"1005";"Cat Food";"Pets";29.99;250
+"1006";"Cat Collar";"Pets";7.99;50
+"1007";"Cat Bed";"Pets";29.99;25
+"1008";"Cat Litter";"Pets";14.99;100
+"1009";"Cat Litter Box";"Pets";9.99;250

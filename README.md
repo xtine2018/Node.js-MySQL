@@ -6,9 +6,6 @@ Instructions:
 
 Create a MySQL Database called bamazon.
 Then create a Table inside of that database called products.
-<p align="center">
-  <img src="assets/Screen Shot 2018-11-24 at 8.42.10 PM.png" width="350" title="hover text">
-</p>
 The products table should have each of the following columns:
 
 item_id (unique id for each product)

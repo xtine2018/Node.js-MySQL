@@ -13,16 +13,16 @@ var connection = mysql.createConnection({
 var stockCheck = function() {
   connection.query("SELECT * FROM Products", function(err, res) {
   var table = new Table({
-  head: ['Item_ID', 'Product_Name', 'Department_Name', 'Price', 'Stock_Quantity']
+  head: ['Item ID', 'Product Name', 'Department Name', 'Price', 'Stock Quantity']
   
 });
 console.log("Pet Supplies For Your Furry Pals:");
 for(var i=0; i < res.length; i++) {
-  table.push([res[i].Item_ID, res[i].Product_Name, res[i].Department_Name, res[i].Price.toFixed(2), res[i].Stock_Quantity]);
+  table.push([res[i].ItemID, res[i].ProductName, res[i].DepartmentName, res[i].Price.toFixed(2), res[i].StockQuantity]);
 }
 console.log(table.toString());
 inquirer.prompt([{
-  name: "Item_ID",
+  name: "ID",
   type: "input",
   message: "What is the ID number of the product you would like to purchase?",
   validate: function(value) {
@@ -34,7 +34,7 @@ inquirer.prompt([{
     }
   }
 },{
-  name: "Stock_Quantity",
+  name: "Quantity",
   type: "input",
   message: "How many units of this item would you like to purchase?",
   validate: function(value) {
@@ -50,17 +50,17 @@ inquirer.prompt([{
   var selectedID = response.Item_ID - 1
   var selectedProduct = res[selectedID]
   var selectedQuantity = response.Quantity
-  if (selectedQuantity < res[selectedID].Stock_Quantity) {
-    console.log("Your total is " + "(" + response.Quantity + ")" + "-" + res[selectedID].Product_Name + " is: " + res[selectedID].Price.toFixed(2) * selectedQuantity);
+  if (selectedQuantity < res[selectedID].StockQuantity) {
+    console.log("Your total is " + "(" + response.Quantity + ")" + "-" + res[selectedID].ProductName + " is: " + res[selectedID].Price.toFixed(2) * selectedQuantity);
     connection.query("UPDATE products SET ? WHERE ?", [{
-      Stock_Quantity: res[selectedID].Stock_Quantity - selectedQuantity
+      StockQuantity: res[selectedID].StockQuantity - selectedQuantity
     },{
       id: res[selectedID].id
     }], function(err, res) {
         stockCheck();
     });
   } else {
-    console.log("Sorry, we only have " + res[selectedID].Stock_Quantity);
+    console.log("Sorry, we only have " + res[selectedID].StockQuantity);
     stockCheck();
   }
 })})}
